@@ -8,9 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MachineServiceImpl implements MachineService<Machine> {
-    private final Bulldozer bulldozer = new Bulldozer();
-    private final Excavator excavator = new Excavator();
-    private final Truck truck = new Truck();
     private final BulldozerProducer bulldozerProducer = new BulldozerProducer();
     private final ExcavatorProducer excavatorProducer = new ExcavatorProducer();
     private final TruckProducer truckProducer = new TruckProducer();
@@ -33,16 +30,8 @@ public class MachineServiceImpl implements MachineService<Machine> {
 
     @Override
     public void startWorking(List<? extends Machine> list) {
-        for (Machine machine : list) {
-            if (machine.getClass() == Bulldozer.class) {
-                bulldozer.doWork();
-            }
-            if (machine.getClass() == Excavator.class) {
-                excavator.doWork();
-            }
-            if (machine.getClass() == Truck.class) {
-                truck.doWork();
-            }
+        for (int i = 0; i < list.size(); i++) {
+            list.get(i).doWork();
         }
     }
 }
