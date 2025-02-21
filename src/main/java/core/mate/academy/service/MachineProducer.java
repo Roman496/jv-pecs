@@ -1,9 +1,10 @@
 package core.mate.academy.service;
 
+import core.mate.academy.model.Machine;
 import java.util.List;
 
-public interface MachineProducer<T> {
+public interface MachineProducer<T extends Machine> {
     int LENGTH_LIST = 5;
 
-    List<? extends T> get();
+    List<T> get();
 }
